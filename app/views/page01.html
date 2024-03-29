@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <h1>Default page template</h1>
+
+  {% from 'checkboxes/macro.njk' import checkboxes %}
+
+<!-- id="first-name" name="first-name" value="{{ data['first-name'] }}" -->
+
+<form action="page02" method="post">
+  {{ checkboxes({
+    "idPrefix": "example",
+    "name": "example",
+    "fieldset": {
+      "legend": {
+        "text": "How would you like to be contacted?",
+        "classes": "nhsuk-fieldset__legend--l",
+        isPageHeading: true
+      }
+    },
+    "hint": {
+      "text": "Select all options that are relevant to you."
+    },
+    "items": [
+      {
+        "value": "email",
+        "text": "Email"
+      },
+      {
+        "value": "phone",
+        "text": "Phone"
+      },
+      {
+        "value": "text",
+        "text": "Text message"
+      }
+    ]
+  }) }}
+
+  {% from 'button/macro.njk' import button %}
+
+  {{ button({
+    "text": "Continue"
+  }) }}
+
+</form>
+{% endblock %}
